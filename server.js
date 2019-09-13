@@ -1,9 +1,17 @@
+const express = require('express');
+const cors = require('cors');
 const GhostAdminAPI = require('@tryghost/admin-api');
+const axios = require('axios');
+
 const ADMIN_API_KEY = "5d7b633ae68d124c5fc569e3:c4d3fa4fca8d13d4bb37e21b2ce4677a4551d6fda4265d5609bd0ae35c7a02df";
 const API_URL = "http://localhost:2368";
 
+const app = express();
+
+app.use(cors());
+
 const api = new GhostAdminAPI({
-    url: 'http://localhost:2368',
+    url: API_URL,
     key: ADMIN_API_KEY,
     version: 'v2'
   });
