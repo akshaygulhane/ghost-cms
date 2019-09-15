@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken');
 const GhostAdminAPI = require('@tryghost/admin-api');
 
-const ADMIN_API_KEY = "5d7ca97a3e875054be6b0bde:e565502e89a9883296d6509d519fac493410b8c440820e7a78df1140a80066a4";
-const API_URL = "http://13.235.78.175:2368";
-const ADMIN_API_URL = 'http://13.235.78.175:2368/ghost/api/v2/admin/posts/';
+const ADMIN_API_KEY = "5d7df1c9330bc543ae0572cd:e4486904ef29c1157c2e31e8fac92080ad1687cae5632f061443b6f71ad63abf";
+const API_URL = "http://3.17.187.37:2368";
+const ADMIN_API_URL = 'http://3.17.187.37:2368/ghost/api/v2/admin/posts/';
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -78,7 +78,7 @@ app.post('/leads', (req, res) => {
                         }
                     )
 
-                    api.posts.edit({ id: '5d7c8bc13e875054be6b0bd4', title: 'Leads Data', updated_at: updated_at, mobiledoc: mobiledocJSOn })
+                    api.posts.edit({ id: '5d7df19b330bc543ae0572c5', title: 'Leads Data', updated_at: updated_at, mobiledoc: mobiledocJSOn })
                         .then(response => {
                             res.status(200).send(response.mobiledoc);
                         })
