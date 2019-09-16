@@ -10,7 +10,7 @@ const API_URL = "http://3.17.187.37:2368";
 const ADMIN_API_URL = 'http://3.17.187.37:2368/ghost/api/v2/admin/posts/';
 const PORT = process.env.PORT || 3001;
 
-const contentNo = 1;
+let contentNo = 1;
 
 const app = express();
 
@@ -77,7 +77,7 @@ app.post('/leads', (req, res) => {
                             "atoms": [],
                             "cards": content,
                             "markups": [],
-                            "sections": mobiledoc.sections
+                            "sections": sections
                         }
                     )
 
