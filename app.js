@@ -10,6 +10,8 @@ const API_URL = "http://3.17.187.37:2368";
 const ADMIN_API_URL = 'http://3.17.187.37:2368/ghost/api/v2/admin/posts/';
 const PORT = process.env.PORT || 3001;
 
+const contentNo = 1;
+
 const app = express();
 
 app.use(cors());
@@ -63,10 +65,11 @@ app.post('/leads', (req, res) => {
 
                     content.push([
                         'html',
-                        { html: `<ul><li>Name: ${name}, Phone #: ${phoneNo}, Email: ${email}, Comments: ${comments}</li></ul>` }
+                        { html: `<ul><li>Name: ${name}</li> <li>Phone #: ${phoneNo}</li> <li>Email: ${email}</li> <li>Comments: ${comments}</li></ul>` }
                     ])
-                    console.log('content ', content)
-                    sections.push([10, 1]);
+                    console.log('content ', content);
+                    contentNo += 1;
+                    sections.push([10, contentNo]);
 
                     let mobiledocJSOn = JSON.stringify(
                         {
@@ -80,18 +83,26 @@ app.post('/leads', (req, res) => {
 
                     api.posts.edit({ id: '5d7df19b330bc543ae0572c5', title: 'Leads Data', updated_at: updated_at, mobiledoc: mobiledocJSOn })
                         .then(response => {
-                            res.status(200).send(response.mobiledoc);
+                            return res.status(200).send(response.mobiledoc);
                         })
                         .catch(err => {
                             console.log(err);
-                            res.status(200).send(err);
+                            return res.status(200).send(err);
                         })
+                }
+                else {
+
                 }
             })
             .catch(error => {
                 console.error(error)
             });
 
+    }
+    else {
+        return res.status(201).send({
+            "message": "invalid data"
+        });
     }
 
 })
